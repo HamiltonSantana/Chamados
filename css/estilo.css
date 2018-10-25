@@ -1,0 +1,9 @@
+.box-tam {
+  margin: 0 auto;
+  width: 200px;
+}
+.centro{
+  display: inline-block;
+  float: right;
+  clear: both;
+}
