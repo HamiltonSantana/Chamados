@@ -13,22 +13,16 @@ http.createServer(function(req, res){
       res.end('OK');                          // Encerra a chamada do metodo
     });
   }
+
   var q = url.parse(req.url, true);
   var filename = "."+q.pathname;
   console.log(filename);
+  // tratando requisicao para consulta
   if(filename == './consulta'){
-    let body = [];
     req.on('data', ()=>{
-      console.log('Carregou');
-      body.push(body);
+      //
     }).on('end', ()=>{
-      fs.readFile('arquivoTeste.txt', function(err, data){
-        if(err) throw err;
-        console.log(data.toString());
-        // body = data.toString();
-        console.log('Encerrado');
-      })
-      res.end('OK');
+      res.end();
     })
   }
   fs.readFile(filename, function(err, data){
