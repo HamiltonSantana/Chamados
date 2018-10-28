@@ -1,7 +1,6 @@
 var http = require('http');
 var url = require('url');
 var fs = require('fs');
-const {parse} = require('querystring');
 
 http.createServer(function(req, res){
   // tratando POST
