@@ -1,5 +1,8 @@
-var http = require('http');
-var dispatcher = require('httpdispatcher');
+var express = require('express');
+var app = express();
 
-http.createServer(function(req, res){
-}).listen(8080);
+app.listen(8080);
+
+app.get('/', (req, res) =>{
+  res.render(src/tag.html);
+});
