@@ -5,7 +5,7 @@ $().ready(function(){
     console.log(valor);
     console.log(conteudo);
     $.ajax({
-      url: '/',
+      url: '/salva',
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({

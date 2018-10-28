@@ -11,6 +11,8 @@ app.get('/', (req, res) =>{
   res.write('<h1>Pagina Inicial</h1>');
 });
 
+// Tratar para chamada de JS. Ao 'loadar' o arquivo, o server
+// nao trata .js (MIME)
 app.get('/:id', (req, res) =>{
   console.log(req.params.id);
   fs.readFile('src/'+req.params.id+'.html', function(err, data){
