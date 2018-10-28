@@ -18,7 +18,7 @@ http.createServer(function(req, res){
   console.log(filename);
   if(filename == './consulta'){
     let body = [];
-    req.on('url', ()=>{
+    req.on('data', ()=>{
       console.log('Carregou');
       body.push(body);
     }).on('end', ()=>{
@@ -27,7 +27,6 @@ http.createServer(function(req, res){
         console.log(data.toString());
         // body = data.toString();
         console.log('Encerrado');
-        res.send(data.toString());
       })
       res.end('OK');
     })
