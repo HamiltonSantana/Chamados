@@ -26,20 +26,31 @@ app.get('/:fd/:id', (req, res)=>{
     return res.end();
   })
 });
-
-app.get('/:id', (req, res) =>{
-  console.log('Enviado');
-  console.log(req.url);
-  res.end();
-});
+//
+// app.get('/:id', (req, res) =>{
+//   console.log('Enviado');
+//   console.log(req.url);
+//   res.end();
+// });
 app.post('/:id', (req, res) =>{
   console.log('Recebido');
   var resFile = '';
-  req.on('data', dados =>{
-    console.log(dados.toString());
-    resFile = dados.toString();
-  }).on('end', ()=>{
+  if(req.url == '/salva'){
+    req.on('data', dados=>{
+      fs.appendFile('chamado1.txt', dados);
+    }).on('end', ()=>{
+      res.end('Salvo!');
+    })
+  }
+  if(req.url == '/consulta'){
+    req.on('data', dados =>{
+      fs.readFile(dados, (err, data)=>{
+        if(err) throw err;
+          resFile = data.toString();
+      })
+    }).on('end', ()=>{
     if(resFile == '') res.end('Sem dados de consulta relacionado');
     else res.end(resFile);
+  }
   })
 });

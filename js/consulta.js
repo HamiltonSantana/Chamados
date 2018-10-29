@@ -14,6 +14,7 @@ $().ready(function(){
         type: 'POST',
         contentType: 'application/json',
         dataType: "text",
+        data: 'chamado1',
         success: function(data){
           console.log(data);
         }
