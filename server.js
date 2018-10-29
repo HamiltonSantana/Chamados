@@ -1,6 +1,12 @@
 var express = require('express');
 var fs = require('fs');
+var bodyParser = require('body-parser');
 var app = express();
+
+app.use( bodyParser.json() );
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 app.listen(8080, ()=>{console.log('Servidor ativo!')});
 
@@ -28,11 +34,11 @@ app.get('/:fd/:id', (req, res)=>{
 });
 
 app.post('/:id', (req, res) =>{
-  console.log('Recebido');
+  console.log(req);
 
   if(req.url == '/salva'){
-    req.on('data', dados=>{
-      fs.appendFile('chamado1.txt', dados);
+    req.on('data', ()=>{
+      fs.appendFile(req.body.'titulo', req.body.'descricao');
     }).on('end', ()=>{
       res.end('Salvo!');
     })
