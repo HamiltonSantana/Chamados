@@ -28,10 +28,11 @@ app.get('/:fd/:id', (req, res)=>{
 
 app.get('/:id', (req, res) =>{
   console.log('Enviado');
-
-  res.end('OK');
+  console.log(req.url);
 });
 app.post('/:id', (req, res) =>{
   console.log('Recebido');
-  console.log(req.data);
+  req.on('data', dados =>{
+    console.log(dados.toString());
+  })
 });
