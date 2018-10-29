@@ -13,7 +13,10 @@ app.get('/', (req, res) =>{
 
 // Adicionando um tratamento para url
 app.get('/:fd/:id', (req, res)=>{
+  console.log(req.params.fd);
   var filename = '.'+req.url;
+  // if(req.params.fd == 'js') filename = filename+'.js';
+  if (req.params.fd == 'src') filename = filename+'.html';
   console.log(filename);
   fs.readFile(filename, (err, data)=>{
     if(err) throw err;
@@ -21,4 +24,9 @@ app.get('/:fd/:id', (req, res)=>{
     res.write(data);
     return res.end();
   })
+});
+
+app.get('/:id', (req, res) =>{
+  console.log('Enviado');
+  res.end('OK');
 });
