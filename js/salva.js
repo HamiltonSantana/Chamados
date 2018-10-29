@@ -11,7 +11,10 @@ $().ready(function(){
       data: JSON.stringify({
         titulo: valor,
         conteudo: conteudo
-      })
+      }),
+      success: function(data){
+        console.log(data);
+      }
     });
   });
 });

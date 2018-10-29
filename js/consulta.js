@@ -14,9 +14,10 @@ $().ready(function(){
         type: 'POST',
         contentType: 'application/json',
         dataType: "text",
-        data: 'chamado1',
+        data: 'chamado1.txt',
         success: function(data){
-          console.log(data);
+          console.log(JSON.parse(data));
+          $(".bt-Pesquisa").after("<p>"+JSON.parse(data)['conteudo']+"</p>");
         }
       }
     );
