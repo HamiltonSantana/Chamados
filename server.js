@@ -17,6 +17,7 @@ app.get('/:fd/:id', (req, res)=>{
   var filename = '.'+req.url;
   // if(req.params.fd == 'js') filename = filename+'.js';
   if (req.params.fd == 'src') filename = filename+'.html';
+
   console.log(filename);
   fs.readFile(filename, (err, data)=>{
     if(err) throw err;
@@ -29,10 +30,16 @@ app.get('/:fd/:id', (req, res)=>{
 app.get('/:id', (req, res) =>{
   console.log('Enviado');
   console.log(req.url);
+  res.end();
 });
 app.post('/:id', (req, res) =>{
   console.log('Recebido');
+  var resFile = '';
   req.on('data', dados =>{
     console.log(dados.toString());
+    resFile = dados.toString();
+  }).on('end', ()=>{
+    if(resFile == '') res.end('Sem dados de consulta relacionado');
+    else res.end(resFile);
   })
 });

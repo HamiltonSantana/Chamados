@@ -10,10 +10,13 @@ $().ready(function(){
     //   data: JSON.stringify({'chamado': valor})
     // }
     {
-        url: valor,
-        type: 'GET',
+        url: '/consulta',
+        type: 'POST',
         contentType: 'application/json',
-        dataType: "text"
+        dataType: "text",
+        success: function(data){
+          console.log(data);
+        }
       }
     );
   });
